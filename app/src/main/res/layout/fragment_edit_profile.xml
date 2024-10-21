@@ -13,7 +13,7 @@
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:src="@drawable/ic_profile"></de.hdodenhof.circleimageview.CircleImageView>
+        android:src="@drawable/ic_profile" />
 
     <TextView
         android:id="@+id/txteditphoto"
@@ -24,9 +24,9 @@
         android:fontFamily="@font/font_poppins"
         android:text="@string/edit_photo"
         android:textColor="@color/forget_blue"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textStyle="normal"
-        tools:ignore="TouchTargetSizeCheck"></TextView>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/text_name"
@@ -37,9 +37,9 @@
         android:fontFamily="@font/font_poppins"
         android:text="@string/username"
         android:textColor="@color/black"
-        android:textSize="19dp"
+        android:textSize="19sp"
         android:textStyle="normal"
-        tools:ignore="TouchTargetSizeCheck"></TextView>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextSignUpUserName"
@@ -72,9 +72,9 @@
         android:fontFamily="@font/font_poppins"
         android:text="@string/email"
         android:textColor="@color/black"
-        android:textSize="19dp"
+        android:textSize="19sp"
         android:textStyle="normal"
-        tools:ignore="TouchTargetSizeCheck"></TextView>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextSignUpEmail"
@@ -117,9 +117,9 @@
             android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/accent_yellow"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cancel"
@@ -132,9 +132,9 @@
             android:text="@string/cancel"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.work.Configuration
+import androidx.work.WorkManager
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
@@ -17,21 +18,27 @@ import org.brightmindenrichment.street_care.notification.NotificationWorkerFacto
 import javax.inject.Inject
 
 @HiltAndroidApp
-class MyApplication : Application(), Configuration.Provider {
+class MyApplication() : Application(), Configuration.Provider {
 
     @Inject
     lateinit var notificationWorkerFactory: NotificationWorkerFactory
 
-    override fun onCreate() {
+     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
+//         WorkManager.initialize(this)
     }
 
-    override fun getWorkManagerConfiguration() =
-        Configuration.Builder()
-            .setMinimumLoggingLevel(Log.DEBUG)
-            .setWorkerFactory(notificationWorkerFactory)
-            .build()
+    override val workManagerConfiguration: Configuration get() = Configuration.Builder()
+        .setMinimumLoggingLevel(Log.DEBUG)
+        .setWorkerFactory(notificationWorkerFactory)
+        .build()
+
+//    fun getWorkManagerConfiguration() =
+//        Configuration.Builder()
+//            .setMinimumLoggingLevel(Log.DEBUG)
+//            .setWorkerFactory(notificationWorkerFactory)
+//            .build()
 
 }
 /*
