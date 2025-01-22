@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.card.MaterialCardView
 import org.brightmindenrichment.street_care.R
 import org.brightmindenrichment.street_care.ui.community.StickyHeaderInterface
@@ -21,6 +22,8 @@ import org.brightmindenrichment.street_care.ui.community.data.Event
 import org.brightmindenrichment.street_care.ui.community.data.EventDataAdapter
 import org.brightmindenrichment.street_care.ui.community.model.CommunityPageName
 import org.brightmindenrichment.street_care.util.Extensions
+import org.brightmindenrichment.street_care.util.Extensions.Companion.createHighlightedSkillTextView
+import org.brightmindenrichment.street_care.util.Extensions.Companion.createSkillTextView
 import org.brightmindenrichment.street_care.util.Extensions.Companion.refreshNumOfInterest
 import org.brightmindenrichment.street_care.util.Extensions.Companion.replaceRSVPButton
 import org.brightmindenrichment.street_care.util.Extensions.Companion.setRSVPButton
@@ -89,6 +92,7 @@ class CommunityRecyclerAdapter(
         private val linearLayoutVerifiedAndIcon: LinearLayout = communityItemView.findViewById(R.id.llVerifiedAndIcon)
         private val textViewRegistered: TextView = communityItemView.findViewById(R.id.tvRegistered)
         private val textViewEventStatus: TextView = communityItemView.findViewById(R.id.tvEventStatus)
+        private val flSkills: FlexboxLayout = communityItemView.findViewById(R.id.flSkills)
 
         init {
             cardViewEvent.setOnClickListener{
@@ -146,6 +150,13 @@ class CommunityRecyclerAdapter(
                 textViewCommunityTime.text = event.time.orEmpty()
                 textViewDate.text = event.date.orEmpty()
                 textViewDay.text = event.day.orEmpty()
+
+                event.skills?.let { skills ->
+                    flSkills.removeAllViews()
+                    for(skill in skills) {
+                        flSkills.addView(createSkillTextView(skill, context))
+                    }
+                }
 
                 Log.d("query", "event.interest: ${event.interest}")
                 Log.d("query", "event.itemList.size: ${event.itemList.size}")

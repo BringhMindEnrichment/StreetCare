@@ -223,6 +223,17 @@
                     android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:flexWrap="wrap">
+
+                <!-- contents go here -->
+
+
+            </com.google.android.flexbox.FlexboxLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
