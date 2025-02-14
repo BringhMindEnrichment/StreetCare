@@ -31,7 +31,7 @@
     <string name="how_to_help_toolkit_desc">Street Care is brought to you by homelessness care experts, to share tools that will enable you to provide transformative help to homeless families and individuals.</string>
     <string name="howtohelp_hot_to_help">How to Help</string>
     <string name="howtohelp_start_now">Start Now</string>
-    <string name="start_now_desc">The essential steps of helping the homeless at every stage of outreach.</string>
+    <string name="start_now_desc">The essential steps of helping the homeless people at every stage of outreach.</string>
     <string name="hottohelp_how_to_videos">How-to Videos</string>
     <string name="howtohelp_what_to_bring">What to Bring and Give</string>
     <string name="donate">Donate</string>
@@ -58,8 +58,8 @@
     <string name="feminine_hygiene">Feminine Hygiene</string>
 
     <string name="healthy_snacks_details">Nonperishable and nutritious snacks such as nuts, pretzels, breakfast bars, applesauce, and dried fruit are best. Try to include items that are easy to chew for individuals without access to dental care. Remember to pack food items separately from any scented sanitary products.</string>
-    <string name="water_details">Finding potable water can be difficult for homeless individuals. Bottled water is a great donation item, as is carrying a jug and cups.</string>
-    <string name="first_aid_details">Infection prevention and first aid care are essential, especially for homeless individuals. Provide sealed, clean items such as bandages, wipes, ointments, and nail care kits to protect those in need. Avoid alcohol-based products.</string>
+    <string name="water_details">Finding potable water can be difficult for homeless people. Bottled water is a great donation item, as is carrying a jug and cups.</string>
+    <string name="first_aid_details">Infection prevention and first aid care are essential, especially for homeless people. Provide sealed, clean items such as bandages, wipes, ointments, and nail care kits to protect those in need. Avoid alcohol-based products.</string>
     <string name="personal_hygiene_details">Soaps should be fragrance-free, as sensitivities and allergies are common. Ensure hand sanitizers do not contain alcohol. Toothpaste and toothbrushes make practical and useful donation items.</string>
     <string name="sock_clothing_details">Clothing items are essential throughout all seasons, particularly warm clothes. Socks are especially crucial; they are affordable, easy to find, and overall great items to include.</string>
     <string name="feminine_hygiene_details">Tampons and pads are necessities, yet something that many families experiencing homelessness struggle to obtain every month. Consider different needs, such as heavy, moderate, and light flow.</string>
@@ -263,7 +263,7 @@
     <string name="singular_interested">is interested</string>
     <string name="first_one_to_join">Be the first one to join!</string>
     <string name="public_help_request_title">Public a request to Community Hub</string>
-    <string name="public_help_request_content">If this homeless person requires further assistance, please provide additional details so we can share with the community and rally support to help them.</string>
+    <string name="public_help_request_content">If this person experiencing homelessness requires further assistance, please provide additional details so we can share with the community and rally support to help them.</string>
     <string name="help_request_second_title">Help other volunteers to find them</string>
     <string name="help_request_second_content">Please provide as many details as you can to help us locate them</string>
     <string name="help_requests_skills">Select the help they need*</string>
@@ -480,7 +480,7 @@
     <string name="search_location">Search location</string>
     <string name="confirm_location">Confirm Location</string>
     <string name="thank_you_post">Thank you for submitting your request!</string>
-    <string name="approval_pending">Approval may take up to 5 business days.</string>
+    <string name="approval_pending">Approval typically takes up to four business days.</string>
     <string name="streamline_experience">Streamline your experience with Chapter membership.</string>
     <string name="learn_more">Sign Up</string>
     <string name="thank_you_registered">Thank you for applying to be a Chapter Member!</string>
