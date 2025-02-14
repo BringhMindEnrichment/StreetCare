@@ -1,5 +1,6 @@
 package org.brightmindenrichment.street_care.ui.community
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -20,6 +21,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -525,18 +527,48 @@ class AddEventFragment : Fragment() {
                 val approvalMessage = getString(R.string.approval_pending)
                 val learnMoreText = getString(R.string.streamline_experience)
                 val learnMoreLink = getString(R.string.learn_more)
+                val alreadyChapterMember = getString(R.string.already_chapter_member)
+
 
 // Create a custom layout for the dialog
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.chapter_membership_signup, null) // Assuming you have a custom_dialog_layout.xml
                 dialogView.findViewById<TextView>(R.id.textViewMessage).text = message
                 dialogView.findViewById<TextView>(R.id.approvalTextView).text = approvalMessage
                 dialogView.findViewById<TextView>(R.id.learnMoreTextView).text = learnMoreText
-                dialogView.findViewById<TextView>(R.id.learnMoreLinkTextView).text = learnMoreLink
-                dialogView.findViewById<TextView>(R.id.learnMoreLinkTextView).setOnClickListener {
-                    val intent = Intent(dialogView.context, ChapterMembershipFormOneAcitivity::class.java)
-                    dialogView.context.startActivity(intent)
-                }
+                val usersDocRef1 = Firebase.firestore.collection("users").document(user.uid)
 
+                usersDocRef1.get()
+                    .addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val userType = document.getString("Type")
+                            val learnMoreTextView = dialogView.findViewById<TextView>(R.id.learnMoreLinkTextView)
+
+                            if (userType == "Chapter Member") {
+                                learnMoreTextView.text = alreadyChapterMember
+                                learnMoreTextView.isClickable = false
+                                learnMoreTextView.isFocusable = false
+                                val grayColor = ContextCompat.getColor(dialogView.context, R.color.gray)
+                                learnMoreTextView.setTextColor(grayColor)
+
+                            } else {
+                                learnMoreTextView.text = learnMoreLink
+                                learnMoreTextView.isClickable = true
+                                learnMoreTextView.isFocusable = true
+                                learnMoreTextView.setOnClickListener{
+                                    try {
+                                        val activityContext = dialogView.context as? Activity ?: return@setOnClickListener
+                                        val intent = Intent(activityContext, ChapterMembershipFormOneAcitivity::class.java)
+                                        activityContext.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        Toast.makeText(dialogView.context, "Error opening sign-up page. Please try again.", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(dialogView.context, "Error opening sign-up page. Please try again.", Toast.LENGTH_LONG).show()
+                    }
 // Create and show the dialog
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)

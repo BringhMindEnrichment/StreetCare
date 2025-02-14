@@ -18,6 +18,7 @@ import androidx.core.text.HtmlCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.brightmindenrichment.street_care.MainActivity
@@ -193,9 +194,23 @@ class ChapterMembershipFormThreeAcitivity : AppCompatActivity(){
         db.collection("SCChapterMembershipForm")
             .add(data)
             .addOnSuccessListener {
-                showSuccessDialog()
-//                Toast.makeText(this, "You are a Chapter member!", Toast.LENGTH_SHORT).show()
-//                startActivity(Intent(this, MainActivity::class.java))
+                val user = Firebase.auth.currentUser
+                if (user != null) {
+                    val usersDocRef = db.collection("users").document(user.uid)
+
+                    usersDocRef.update("Type", "Chapter Member")
+                        .addOnSuccessListener {
+                            showSuccessDialog()
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("ChapterForm", "Error updating user type", e)
+                            Toast.makeText(
+                                this,
+                                "Failed to update user type: ${e.message}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                }
             }
             .addOnFailureListener { e ->
                 Log.e("ChapterForm", "Error saving data", e)
