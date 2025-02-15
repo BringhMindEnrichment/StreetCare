@@ -525,6 +525,7 @@
     <string name="chapter_membership_first_name">First name</string>
     <string name="chapter_membership_last_name">Last name</string>
     <string name="events_can_only_be_logged_by_logged_in_users">Event can only be created by logged in users</string>
+    <string name="time_format">%1$s:%2$s %3$s</string>
 
     <!--events filter-->
     <string-array name="events_filter">

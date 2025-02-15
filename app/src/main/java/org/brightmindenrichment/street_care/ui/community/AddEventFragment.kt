@@ -224,7 +224,8 @@ class AddEventFragment : Fragment() {
                     { view, hourOfDay, minute ->
                         val minuteStr = if(minute < 10) "0$minute" else "$minute"
                         val hourStr = if(hourOfDay < 10) "0$hourOfDay" else "$hourOfDay"
-                        edtEventStartTime.setText("$hourStr:$minuteStr")
+                        val timezone = TimeZone.getDefault().getDisplayName(false, TimeZone.SHORT)
+                        edtEventStartTime.setText(requireContext().getString(R.string.time_format,hourStr, minuteStr,timezone))
                         startCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                         startCalendar.set(Calendar.MINUTE, minute)
                     },
@@ -243,7 +244,8 @@ class AddEventFragment : Fragment() {
                     { view, hourOfDay, minute ->
                         val minuteStr = if(minute < 10) "0$minute" else "$minute"
                         val hourStr = if(hourOfDay < 10) "0$hourOfDay" else "$hourOfDay"
-                        edtEventEndTime.setText("$hourStr:$minuteStr")
+                        val timezone = TimeZone.getDefault().getDisplayName(false, TimeZone.SHORT)
+                        edtEventEndTime.setText(requireContext().getString(R.string.time_format,hourStr, minuteStr,timezone))
                         endCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                         endCalendar.set(Calendar.MINUTE, minute)
                     },
