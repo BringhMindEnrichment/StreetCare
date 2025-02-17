@@ -517,6 +517,14 @@ y enviarlo a nosotros a <a href="mailto:volunteer@streetcare.us">volunteer@stree
     <string name="chapter_membership_first_name">Nombre</string>
     <string name="chapter_membership_last_name">Apellido</string>
     <string name="events_can_only_be_logged_by_logged_in_users">El evento solo puede ser creado por usuarios registrados</string>
+    <string name="street_care_hub_leader_badge">Street Care Hub Leader Badge</string>
+    <string name="street_care_hub_leader">Street Care Hub Leader</string>
+    <string name="chapter_leader_badge">Chapter Leader Badge</string>
+    <string name="chapter_leader">Chapter Leader</string>
+    <string name="chapter_member_badge">Chapter Member Badge</string>
+    <string name="chapter_member">Chapter Member</string>
+    <string name="account_holder_badge">Account Holder Badge</string>
+    <string name="account_holder">Account holder</string>
 
     <!--events filter-->
     <string-array name="events_filter">
