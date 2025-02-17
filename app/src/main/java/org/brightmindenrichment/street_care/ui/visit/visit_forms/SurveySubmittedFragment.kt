@@ -84,43 +84,69 @@ class SurveySubmittedFragment : Fragment() {
             // Retrieve the current visitLog from ViewModel
             val visitLog = sharedVisitViewModel.visitLog
 
-             //Prepare the data to save
-            val visitData = hashMapOf(
-                "HelpTime" to visitLog.helpTime,
-                "dateTime" to visitLog.date,
-                "whenVisitTime" to visitLog.whenVisitTime,
-                "NumberOfPeopleHelped" to visitLog.peopleCount,
-                "PeopleHelpedDescription" to visitLog.names,
-                "rating" to visitLog.experience,
-                "share" to visitLog.share,
-                "uid" to user.uid,
-                "number_of_items_donated" to visitLog.number_of_items,
-                "WhatGiven" to visitLog.whattogive,
-                "Location" to visitLog.locationmap,
-                "Type" to visitLog.typeofdevice,
-                "food_drink" to visitLog.food_drink,
-                "clothes" to visitLog.clothes,
-                "hygine" to visitLog.hygine,
-                "wellness" to visitLog.wellness,
-                "lawyerLegal" to visitLog.lawyerLegal,
-                "medicalhelp" to visitLog.medicalhelp,
-                "social" to visitLog.socialWorker,
-                "other" to visitLog.other,
-                "status" to "pending"
-//                //"public" to true,
-            )
+            val usersDocRef = db.collection("users").document(user.uid)
 
-            // Save data to the "visitLogWebProd" collection
-            db.collection("visitLogWebProd")
-                .add(visitData)
-                .addOnSuccessListener {
-                    Log.d(TAG, "Visit Log successfully shared to visitLogWebProd")
-                    Toast.makeText(context, getString(R.string.info_shared_success), Toast.LENGTH_SHORT).show()
+            usersDocRef.get().addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val userType = document.getString("Type") ?: ""
+
+                    // Determine status based on user type
+                    val status =
+                        if (userType == "Chapter Leader" || userType == "Street Care Hub Leader") "approved" else "pending"
+
+                    //Prepare the data to save
+                    val visitData = hashMapOf(
+                        "HelpTime" to visitLog.helpTime,
+                        "dateTime" to visitLog.date,
+                        "whenVisitTime" to visitLog.whenVisitTime,
+                        "NumberOfPeopleHelped" to visitLog.peopleCount,
+                        "PeopleHelpedDescription" to visitLog.names,
+                        "rating" to visitLog.experience,
+                        "share" to visitLog.share,
+                        "uid" to user.uid,
+                        "number_of_items_donated" to visitLog.number_of_items,
+                        "WhatGiven" to visitLog.whattogive,
+                        "Location" to visitLog.locationmap,
+                        "Type" to visitLog.typeofdevice,
+                        "food_drink" to visitLog.food_drink,
+                        "clothes" to visitLog.clothes,
+                        "hygine" to visitLog.hygine,
+                        "wellness" to visitLog.wellness,
+                        "lawyerLegal" to visitLog.lawyerLegal,
+                        "medicalhelp" to visitLog.medicalhelp,
+                        "social" to visitLog.socialWorker,
+                        "other" to visitLog.other,
+                        "status" to status
+//                //"public" to true,
+                    )
+
+                    // Save data to the "visitLogWebProd" collection
+                    db.collection("visitLogWebProd")
+                        .add(visitData)
+                        .addOnSuccessListener {
+                            Log.d(TAG, "Visit Log successfully shared to visitLogWebProd")
+                            Toast.makeText(
+                                context,
+                                getString(R.string.info_shared_success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e(TAG, "Error sharing Visit Log: ", e)
+                            Toast.makeText(
+                                context,
+                                getString(R.string.info_share_failed),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                 }
-                .addOnFailureListener { e ->
-                    Log.e(TAG, "Error sharing Visit Log: ", e)
-                    Toast.makeText(context, getString(R.string.info_share_failed), Toast.LENGTH_SHORT).show()
-                }
+            }.addOnFailureListener { e ->
+            Log.w(
+                "syncWebApp",
+                "Error getting user details",
+                e
+            )
+        }
         } else {
             Log.e(TAG, "User is not logged in")
             Toast.makeText(context, "Please log in to share info", Toast.LENGTH_SHORT).show()

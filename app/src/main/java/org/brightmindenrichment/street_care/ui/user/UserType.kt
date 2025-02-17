@@ -13,7 +13,7 @@ enum class UserType {
 
 fun getUserType(type: String): UserType {
     return when (type) {
-        "Internal Member" -> UserType.INTERNAL_MEMBER
+        "Street Care Hub Leader" -> UserType.INTERNAL_MEMBER
         "Chapter Leader" -> UserType.CHAPTER_LEADER
         "Chapter Member" -> UserType.CHAPTER_MEMBER
         else -> UserType.REGISTERED_USER
