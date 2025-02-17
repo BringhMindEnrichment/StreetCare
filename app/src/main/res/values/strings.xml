@@ -116,7 +116,8 @@
 
     <!-- Community-->
     <string name="activity_title">Activities</string>
-    <string name="turn_on_location">Please Turn On Location</string>
+    <string name="turn_on_location">Please Turn On Location to see the Events near you.</string>
+    <string name="location_permission_denied">Please allow Street Care to access location to see events near you</string>
     <string name="default_location_placeholder">Unavailable</string>
     <string name="city_field">City:  </string>
     <string name="view_all_button">View All</string>
@@ -282,7 +283,7 @@
     <string name="delete_acc_msg">This will permanently delete your account and all data associated with it. This can\'t be undone.</string>
     <string name="delete_acc_title">Delete Account</string>
     <string name="confirm">Confirm</string>
-    <string name="map_title">Map (Coming Soon)</string>
+    <string name="map_title">Map</string>
     <string name="reply_text">Replies</string>
     <string name="locationTitle">Location</string>
     <string name="contactTitle">Contact Information (Optional)</string>

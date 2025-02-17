@@ -109,7 +109,8 @@ Si prefieres firmar y enviar una copia o guardarla para referencia futura, por f
 
     <!-- Community-->
     <string name="activity_title">Actividades</string>
-    <string name="turn_on_location">Por favor, activa la ubicación</string>
+    <string name="turn_on_location">Por favor, active la ubicación para ver los eventos cerca de usted.</string>
+    <string name="location_permission_denied">Por favor, permite que Street Care acceda a la ubicación para ver eventos cerca de ti</string>
     <string name="default_location_placeholder">No disponible</string>
     <string name="city_field">Ciudad:  </string>
     <string name="view_all_button">Ver Todo</string>

@@ -53,6 +53,24 @@ object Queries {
             .whereGreaterThanOrEqualTo("eventDate", targetDay)
             .orderBy("eventDate", order)
     }
+    // get only 50 events
+    fun getUpcomingEventsQueryUpTo50(
+        order: Query.Direction = Query.Direction.ASCENDING
+    ): Query {
+        return Firebase.firestore
+            .collection("outreachEvents")
+            .orderBy("eventDate", order)
+            .limit(50)  // Limits to 50 documents
+    }
+    // get only 50 help requests
+    fun getHelpRequestDefaultQueryUpTo50(
+        order: Query.Direction = Query.Direction.ASCENDING
+    ): Query {
+        return Firebase.firestore
+            .collection("helpRequests")
+            .orderBy("createdAt", order)
+            .limit(50)  // Limits to 50 documents
+    }
 
     fun getHelpRequestEventsQuery(
         order: Query.Direction = Query.Direction.ASCENDING,
